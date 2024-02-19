@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ../examples/ && terraform init
+cd ./examples/ && terraform init
 
 cd ../examples/ && terraform plan -out=tfplan.binary
 
