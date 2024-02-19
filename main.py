@@ -58,7 +58,8 @@ def generar_codigo_diagrama(elementos, archivo_salida):
 archivo_salida = "diagrama_generado.py"
 
 print("Run")
-subprocess.run(["sh","-c","bash_scripts/tf_steps.sh"])
+subprocess.run(["ls","-ls"])
+subprocess.run(["sh","-c","./bash_scripts/tf_steps.sh"])
 
 # # Generar el código del diagrama y guardar en el archivo
 elementos = listar_recursos('examples/tfplan.json')
