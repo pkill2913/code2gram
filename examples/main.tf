@@ -35,3 +35,11 @@ resource "aws_instance" "web_server" {
     Name = "JacksBlogExample"
   }
 }
+
+resource "aws_instance" "test_2" {
+  ami           = "ami-04e914639d0cca79a"
+  instance_type = "t2.micro"
+  tags = {
+    Name = "Sisas"
+  }
+}
