@@ -1,9 +1,8 @@
-
-
 from diagrams import Diagram, Cluster, Edge
 from diagrams.aws.compute import EC2
 from diagrams.aws.database import RDS
 from diagrams.aws.network import ELB
+import subprocess
 
 import json
 
@@ -37,9 +36,7 @@ def listar_recursos(tfstate_path):
    
     return recursos
 
-elementos = listar_recursos('examples/tfplan.json')
 # resources = get_region(elementos)
-
 
 def generar_codigo_diagrama(elementos, archivo_salida):
     with open(archivo_salida, 'w') as archivo:
@@ -60,6 +57,11 @@ def generar_codigo_diagrama(elementos, archivo_salida):
 # # Nombre del archivo de salida
 archivo_salida = "diagrama_generado.py"
 
+print("Run")
+subprocess.run(["sh","-c","bash_scripts/tf_steps.sh"])
+
 # # Generar el código del diagrama y guardar en el archivo
+elementos = listar_recursos('examples/tfplan.json')
 generar_codigo_diagrama(elementos, archivo_salida)
 
+subprocess.run(["python", "diagrama_generado.py"])
